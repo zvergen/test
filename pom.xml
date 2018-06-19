@@ -7,8 +7,8 @@
   <packaging>pom</packaging>
   <name>test</name>
   <modules>
-    <module>view</module>
     <module>logic</module>
+    <module>view</module>
     <module>ear</module>
   </modules>
 </project>
