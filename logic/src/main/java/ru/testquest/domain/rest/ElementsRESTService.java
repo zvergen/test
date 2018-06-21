@@ -18,7 +18,7 @@ public class ElementsRESTService {
     /*Main Elements*/
 
     @GET
-    @Path("/allZero")
+    @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMainElementList() {
         String json = new Gson().toJson(elementManagerBean.getAllElementZero());
