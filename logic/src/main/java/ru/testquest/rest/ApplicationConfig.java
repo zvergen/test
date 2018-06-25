@@ -1,8 +1,8 @@
-package ru.testquest.domain.rest;
+package ru.testquest.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 @ApplicationPath("/rest")
-public class JaxRsActivator extends Application {
+public class ApplicationConfig extends Application {
 }
