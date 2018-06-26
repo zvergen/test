@@ -14,7 +14,6 @@ public class Credentials {
 
     public static final String GET_USER_CREDENTIALS = "Credentials.getUserCredentials";
     public static final String FIND_USER_COOKIE = "Credentials.findUserCookie";
-    public static final String INVALID_CREDENTIALS = "{\"status\":\"Invalid credentials\"}";
 
     @Id
     private long id;

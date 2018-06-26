@@ -1,7 +1,6 @@
 package ru.testquest.rest;
 
 import ru.testquest.domain.Element;
-import ru.testquest.ejb.AuthManagerBean;
 import ru.testquest.ejb.ElementManagerBean;
 import ru.testquest.filter.Secured;
 
@@ -22,7 +21,7 @@ public class ElementsRESTService {
     @GET
     @Secured
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getMainElementList(@CookieParam("sessionToken") String sessionToken) {
+    public Response getMainElementList() {
         /*If sessionToken is exist or not Empty AND complete checking*/
         List<Element> elementList = elementManagerBean.getElementList(0);
         return Response.ok(elementList).build();
@@ -34,8 +33,7 @@ public class ElementsRESTService {
     @Secured
     @Path("/{elementId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getElementById(@PathParam("elementId") long id,
-                                   @CookieParam("sessionToken") String sessionToken) {
+    public Response getElementById(@PathParam("elementId") long id) {
         Element element = elementManagerBean.getElementById(id);
         if (element == null) {
             return Response.noContent().build();
@@ -47,8 +45,7 @@ public class ElementsRESTService {
     @Secured
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createElement(Element element,
-                                  @CookieParam("sessionToken") String sessionToken) {
+    public Response createElement(Element element) {
         elementManagerBean.createElement(element);
         return Response.ok(element).build();
     }
@@ -57,8 +54,7 @@ public class ElementsRESTService {
     @Secured
     @Path("/{elementId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response changeElementDataById(Element newData,
-                                          @CookieParam("sessionToken") String sessionToken) {
+    public Response changeElementDataById(Element newData) {
         Element element = elementManagerBean.updateElementData(newData);
         if (element == null) {
             return Response.status(204).build();
@@ -69,8 +65,7 @@ public class ElementsRESTService {
     @DELETE
     @Secured
     @Path("/{elementId}")
-    public Response deleteElement(@PathParam("elementId") long id,
-                                  @CookieParam("sessionToken") String sessionToken) {
+    public Response deleteElement(@PathParam("elementId") long id) {
         if (elementManagerBean.deleteElement(id)) {
             return Response.ok("{\"message\":\"success\"}").build();
         }

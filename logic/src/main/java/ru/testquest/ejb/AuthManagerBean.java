@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 @Stateless
 public class AuthManagerBean {
 
-    public static final String INVALID_CREDENTIALS = "{\"status\":\"Invalid credentials\"}";
-
     @PersistenceContext(name = "sample_PU")
     private EntityManager entityManager;
 
@@ -32,7 +30,6 @@ public class AuthManagerBean {
             Credentials credentials = query.getSingleResult();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
